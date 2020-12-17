@@ -10,11 +10,17 @@ import java.util.*;
 			this.booksCount = booksCount;
 		}
 		
-		public void printMenu() {
-	        System.out.println("1. Book a seat ");
-	        System.out.println("2. View Booking ");
-	        System.out.println(calculateBoxes());
-	        System.out.println(calculateShippingFee());
+		public void shippingInfo() {
+	        int boxesCount = calculateBoxes();
+	        double shippingCost = calculateShippingFee();
+	        int remainder = this.booksCount % 5;
+	        if(remainder == 0) {
+		        System.out.printf("You will receive %d boxes containing 5 books each.", boxesCount);
+	        } else {
+		        System.out.printf("You will receive %d boxes, %d boxes containing 5 books each and one box containing %d books.", boxesCount, boxesCount - 1, this.booksCount % 5 );
+	        }
+	        System.out.println();
+	        System.out.printf("The shipping price will be: %.2f sek", shippingCost);
 	    }
 		
 		public int calculateBoxes() {
@@ -23,17 +29,15 @@ import java.util.*;
 		}
 		
 		public double calculateShippingFee() {
-			double fee = 0;
+			double fee = 5;
 			double shippingCost = 0;
 			int boxesCount = calculateBoxes();
 			if(boxesCount > 0 && boxesCount < 6) {
 				fee = 8;
 			}
-			
 			if(boxesCount > 5 && boxesCount < 51) {
 				fee = 5;
 			}
-			
 			shippingCost = boxesCount * fee;
 			return shippingCost;
 		}
@@ -42,13 +46,13 @@ import java.util.*;
 			int greaterThanZero = 1;
 			System.out.println("main");
 			while(greaterThanZero > 0) {
-				System.out.print("Enter number of books to ship: ");
+				System.out.print("How many books do you have for shipping? ");
 				int booksCount = userInput.nextInt();
-	            if (booksCount == 0) {
-	                System.out.println("Enter number of books greater than 0");
+	            if (booksCount < 1) {
+	                System.out.println("Not a valid number, try again.");
 	            } else {
 	            	BookStore bs = new BookStore(booksCount);
-	            	bs.printMenu();
+	            	bs.shippingInfo();
 	            	greaterThanZero = 0;
 	            }
 			}
