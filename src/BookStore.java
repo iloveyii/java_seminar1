@@ -71,6 +71,20 @@ import java.util.*;
 			} 
 			System.out.println("The minimum number that you have entered was: " + minimum);
 		}
+		
+		public static void task3() {
+			System.out.println("Enter the average speed <km/h>:");
+			int averageSpeed = userInput.nextInt();
+			System.out.println("Enter the remaining mileage <mile>:");
+			double mileage = userInput.nextDouble();
+			mileage = mileage * 10; // in km
+			double remainingTime = mileage / averageSpeed;
+			remainingTime = remainingTime * 60; // in min
+			int remainingHours = (int)remainingTime / 60;
+			int remainingMinutes = (int)(remainingTime % 60);
+			System.out.printf("Your remaining travel time is: %d hour(s) and %d minutes.", remainingHours, remainingMinutes);			
+		}
+		
 		public static void main(String[] args) {
 			int choice = 0;
 			do {
@@ -83,6 +97,7 @@ import java.util.*;
 				choice = userInput.nextInt();
 				if(choice == 1) task1();
 				if(choice == 2) task2();
+				if(choice == 3) task3();
 			} while (choice != 0);
 		}
 	}
