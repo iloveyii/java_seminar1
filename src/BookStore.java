@@ -45,6 +45,7 @@ import java.util.*;
 		public static void task1() {
 			int greaterThanZero = 1;
 			while(greaterThanZero > 0) {
+				System.out.println();
 				System.out.print("How many books do you have for shipping? ");
 				int booksCount = userInput.nextInt();
 	            if (booksCount < 1) {
@@ -60,6 +61,7 @@ import java.util.*;
 		public static void task2() {
 			int a = 0;
 			int minimum = a;
+			System.out.println();
 			System.out.println("Enter a few numbers to find the minumum, 0 to exit. ");
 			System.out.println("Write a number:");
 			a = userInput.nextInt();
@@ -73,6 +75,7 @@ import java.util.*;
 		}
 		
 		public static void task3() {
+			System.out.println();
 			System.out.println("Enter the average speed <km/h>:");
 			int averageSpeed = userInput.nextInt();
 			System.out.println("Enter the remaining mileage <mile>:");
@@ -89,15 +92,24 @@ import java.util.*;
 			int choice = 0;
 			do {
 				System.out.println();
+				System.out.println();
 				System.out.println("1. Taks 1");
 				System.out.println("2. Taks 2");
 				System.out.println("3. Taks 3");
 				System.out.println("0. Exit");
 				System.out.print("Choose the task number (1-3), 0 to exit : ");
 				choice = userInput.nextInt();
-				if(choice == 1) task1();
-				if(choice == 2) task2();
-				if(choice == 3) task3();
+				switch(choice) {
+				case 1:
+					task1();
+					break;
+				case 2:
+					task2();
+					break;
+				case 3:
+					task3();
+					break;
+				}			
 			} while (choice != 0);
 		}
 	}
